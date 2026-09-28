@@ -1,81 +1,33 @@
-Smart Solar Tracker v2
-📌 Overview
-The Smart Solar Tracker v2 is an IoT-enabled hardware and software solution designed to maximize solar panel efficiency by adjusting its angle to face the sun directly. This repository contains the complete firmware for the microcontroller, the Android application source code, and the electrical schematics required to build and operate the tracker.
+# 🌞 Dual-Mode Smart Solar Tracker
 
-The system is controlled via a custom Android application that communicates with the hardware over Bluetooth/Wi-Fi, providing real-time positional control and monitoring.
+A Smart Solar Tracker project that automatically tracks the sun using LDR sensors and can also be manually controlled via an Android App using an HC-05 Bluetooth module.
 
-✨ Features
-Precise Angle Control: A manual slider allows users to set the solar panel to any specific angle between 0° and 180°[cite: 1].
+## 🚀 Features
+- **Auto Mode:** Automatically tracks the light source using two LDR sensors.
+- **Manual Mode:** Control the solar panel angle (0° to 180°) manually using a custom Android app.
+- **Emergency Stop:** Immediately stops the servo motor movement.
+- **Presets:** Quick buttons for Morning (0°), Noon (90°), and Evening (180°).
 
-Fine-Tuning: Increment (+1°) and decrement (-1°) buttons for micro-adjustments[cite: 1].
+## 🛠️ Components Required
+- Arduino UNO
+- Servo Motor (SG90 or MG995)
+- 2x LDR (Light Dependent Resistors)
+- HC-05 Bluetooth Module
+- 10k Resistors (for LDR voltage divider)
+- Solar Panel (Dummy or Real for testing)
 
-Quick Presets: One-tap positioning for Morning (0°), Noon (90°), and Evening (180°)[cite: 1].
+## 🔌 Pin Connections (Circuit)
+| Component | Arduino Pin |
+| :--- | :--- |
+| **Servo Motor (Signal)** | Pin 9 |
+| **East LDR** | Analog Pin A0 |
+| **West LDR** | Analog Pin A1 |
+| **HC-05 TX** | Pin 10 (SoftwareSerial RX) |
+| **HC-05 RX** | Pin 11 (SoftwareSerial TX - Use Voltage Divider) |
 
-Emergency Override: A dedicated "STOP MOTOR" button instantly halts all mechanical movement in case of hardware malfunction or emergency[cite: 1].
-
-Real-time UI Feedback: The app interface dynamically displays the currently selected angle[cite: 1].
-
-📂 Repository Structure
-Plaintext
-Smart-Solar-Tracker/
-│
-├── Arduino_Code/               # Microcontroller firmware (.ino files)
-├── App/                        # MIT App Inventor project (.aia) and Android app (.apk)
-├── Schematics/                 # Circuit diagrams and wiring guides
-├── Docs/                       # Component list, flowcharts, and project reports
-├── README.md                   # Project documentation
-└── LICENSE                     # Open-source license (MIT)
-🛠️ Hardware Requirements
-Microcontroller: Arduino UNO, Nano, or ESP32
-
-Actuator: Servo Motor (e.g., SG90, MG995, or linear actuator with motor driver)
-
-Wireless Module: HC-05 Bluetooth Module (if using standard Arduino)
-
-Power Supply: 5V/12V DC power source appropriate for the motors
-
-Structural Frame: 3D printed or wooden chassis for the solar panel
-
-💻 Software Requirements
-Arduino IDE: To compile and upload the firmware.
-
-MIT App Inventor: To modify the .aia source file if UI changes are needed.
-
-🚀 Installation & Setup
-1. Hardware Setup
-Assemble the mechanical frame and mount the servo motor.
-
-Wire the components according to the diagram provided in the Schematics/ directory.
-
-Ensure common ground is established between the microcontroller, motor power supply, and wireless module.
-
-2. Firmware Upload
-Open Arduino_Code/smart_solar_tracker.ino in the Arduino IDE.
-
-Install any required libraries (e.g., <Servo.h>, <SoftwareSerial.h>).
-
-Select your designated board and COM port.
-
-Click Upload. (Note: Disconnect the HC-05 RX/TX pins while uploading code to an Arduino Uno).
-
-3. Mobile App Installation
-Transfer App/Smart_Solar_Tracker_v2.apk to your Android device.
-
-Enable "Install from Unknown Sources" in your device settings.
-
-Install the application.
-
-📱 Usage Instructions
-Power on the solar tracker hardware.
-
-Open your Android device's Bluetooth settings and pair with the HC-05 module (Default PIN is usually 0000 or 1234).
-
-Open the Smart Solar Tracker v2 app.
-
-Tap the Bluetooth Connect button (if configured) to establish a connection.
-
-Use the Slider, Fine-Tuning Buttons, or Quick Presets to adjust the angle[cite: 1].
-
-Tap Set Panel Angle to transmit the command to the hardware[cite: 1].
-
-Use the red STOP MOTOR button to halt operations immediately if necessary[cite: 1].
+## 📱 How to Use the App
+1. Download and install the `Smart_Solar_Tracker_v2.apk` from the **App** folder.
+2. Turn on Bluetooth on your phone and pair the **HC-05** module (Default PIN: 1234 or 0000).
+3. Open the app, click on **Connect**, and select the HC-05 device.
+4. Use the slider, +1/-1 buttons, or Quick Presets to control the panel manually.
+5. Send the "AUTO" command to switch back to LDR tracking mode.
