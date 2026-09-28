@@ -1,0 +1,23 @@
+# OS generated files (Windows/Mac की फालतू फाइल्स)
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Arduino build files (कम्पाइल होने के बाद बनने वाली टेम्पररी फाइल्स)
+build/
+*.elf
+*.hex
+*.bin
+*.out
+
+# IDE specific settings (VS Code या Arduino IDE 2.0 की सेटिंग्स)
+.vscode/
+*.code-workspace
+
+# MIT App Inventor Keystore (अगर गलती से डाउनलोड हो जाए)
+*.keystore
